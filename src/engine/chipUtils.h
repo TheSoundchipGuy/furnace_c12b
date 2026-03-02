@@ -25,7 +25,7 @@
 
 // custom clock limits
 #define MIN_CUSTOM_CLOCK 1
-#define MAX_CUSTOM_CLOCK 4294967296
+#define MAX_CUSTOM_CLOCK 268435456
 // common shared channel struct
 template<typename T> struct SharedChannel {
   int freq, baseFreq, baseNoteOverride, pitch, pitch2, arpOff;
