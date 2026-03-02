@@ -139,6 +139,11 @@ void FurnaceGUI::initSystemPresets() {
     _("Game Boy"), {
       CH(DIV_SYSTEM_GB, 1.0f, 0, "")
     }
+      );
+  ENTRY(
+    _("TEST"), {
+      CH(DIV_SYSTEM_C12B, 1.0f, 0, "")
+    }
   );
   ENTRY(
      _("Game Boy Advance"), {}
