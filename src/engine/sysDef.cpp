@@ -1074,6 +1074,26 @@ void DivEngine::registerSystems() {
     waveOnlyEffectHandlerMap
   );
 
+  sysDefs[DIV_SYSTEM_C12B]=new DivSysDef(
+    _("TEST"), NULL, 0x04, 0x04, 4, 4, 4,
+    false, true, 0x161, false, 0, 32, 16,
+    _("TEST"),
+    DivChanDefFunc({
+      DivChanDef(_("Pulse 1")  , "S1", DIV_CH_PULSE, DIV_INS_GB),
+      DivChanDef(_("Pulse 2")  , "S2", DIV_CH_PULSE, DIV_INS_GB),
+      DivChanDef(_("Wavetable"), "WA", DIV_CH_WAVE , DIV_INS_GB),
+      DivChanDef(_("Noise")    , "NO", DIV_CH_NOISE, DIV_INS_GB)
+    }),
+    {
+      {0x10, {DIV_CMD_WAVE, _("10xx: Set waveform")}},
+      {0x11, {DIV_CMD_STD_NOISE_MODE, _("11xx: Set noise length (0: long; 1: short)")}},
+      {0x12, {DIV_CMD_STD_NOISE_MODE, _("12xx: Set duty cycle (0 to 3)")}},
+      {0x13, {DIV_CMD_GB_SWEEP_TIME, _("13xy: Setup sweep (x: time; y: shift)")}},
+      {0x14, {DIV_CMD_GB_SWEEP_DIR, _("14xx: Set sweep direction (0: up; 1: down)")}}
+    }
+  );
+
+
   sysDefs[DIV_SYSTEM_SAA1099]=new DivSysDef(
     _("Philips SAA1099"), NULL, 0x97, 0, 6, 6, 6,
     false, true, 0x171, false, 0, 0, 0,
@@ -1515,7 +1535,7 @@ void DivEngine::registerSystems() {
   sysDefs[DIV_SYSTEM_POKEMINI]=new DivSysDef(
     _("Pokémon Mini"), NULL, 0x99, 0, 1, 1, 1,
     false, true, 0, false, 0, 0, 0,
-    _("this one is like PC Speaker but has duty cycles."),
+    _("this one is like PC Speaker but has duty cycles and finally volume control!.. But it's only 2 volumes."),
     DivChanDefFunc({
       DivChanDef(_("Pulse"), "P", DIV_CH_PULSE, DIV_INS_POKEMINI)
     })
