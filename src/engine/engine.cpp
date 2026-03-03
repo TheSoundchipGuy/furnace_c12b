@@ -541,7 +541,7 @@ void DivEngine::initSongWithDesc(const char* description, bool inBase64, bool ol
   // extra attributes
   song.subsong[0]->hz=c.getDouble("tickRate",60.0);
   if (song.subsong[0]->hz<1.0) song.subsong[0]->hz=1.0;
-  if (song.subsong[0]->hz>999.0) song.subsong[0]->hz=999.0;
+  // if (song.subsong[0]->hz>999.0) song.subsong[0]->hz=999.0;
 
   curChanMask=c.getIntList("chanMask",{});
   for (unsigned char i: curChanMask) {
